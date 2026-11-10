@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cart</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body class="bg-gray-100">
+<header class="bg-indigo-600 fixed top-0 left-0 w-full shadow z-50">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-center items-center">
+    <h1 class="text-2xl font-bold text-white">smartMart</h1>
+  </div>
+</header>
+<div class="pt-24"></div>
+<section class="max-w-5xl mx-auto px-6 py-10 bg-white rounded-lg shadow">
+  <h2 class="text-3xl font-semibold text-center mb-6">Products check out</h2>
+  <div id="cartItems"></div>  
+  <div class="flex justify-between items-center mt-8">
+    <a href="index.html"class="bg-gray-200 hover:bg-gray-300 px-6 py-2 rounded-lg">Go to Shopping</a>
+    <div class="flex gap-4">
+      <button onclick="clearCart()"class="bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded-lg">Clear Cart</button>
+
+      <button onclick="placeOrder()" id="place-order"
+        class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-lg">
+        Place Order
+      </button>
+    </div>
+  </div>
+</section>
+  <button id="checkoutBtn" class="p-[5px] mt-[10px] border rounded bg-green-600 text-white w-full">Checkout</button>
+   <p id="total" class="mt-2 font-bold"></p>
+
+<!--outter section-->
+<div id="cart" class="p-4 border rounded items-center w-80 mx-auto">
+
+  <input type="text" id="promoCode" placeholder="Enter Promo Code" class="p-[5px] mt-[10px] border rounded w-full">
+  
+  <button 
+    id="applyPromo" class="p-[5px] mt-[10px] border rounded bg-black text-white w-full">Apply Promo Code</button>
+
+</div>
+
+<footer class="bg-gray-800 text-white py-6 mt-12">
+  <div class="max-w-7xl mx-auto px-6 text-center flex flex-col md:flex-row items-center justify-center gap-4">
+    <p class="text-sm">&copy; 2025 Badhon Khan. All rights reserved.</p>
+     <br>
+    <div class="flex gap-4 mt-2 md:mt-0">
+      <a href="https://github.com/Badhon1446" target="_blank" class="hover:text-gray-400 transition">
+        <i class="fa-brands fa-github text-xl"></i>
+       github</a>
+      <a href="https://www.linkedin.com/in/badhon-khan-383ba52a2/" target="_blank" class="hover:text-gray-400 transition">
+        <i class="fa-brands fa-linkedin text-xl"></i>
+      linkedin</a>
+    </div>
+
+  </div>
+</footer>
+
+<script src="Product_folder/cart.js"></script>
+
+<script>
+  function placeOrder() {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    if (cart.length === 0) {
+      alert("Order kor kisu!");
+      return;
+    }
+    alert("Please ok click koren!");
+    localStorage.removeItem("cart");
+    window.location.href = "order.html";
+  }
+</script>
+
+</body>
+</html>
